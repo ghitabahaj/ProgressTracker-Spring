@@ -4,17 +4,13 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
-import java.util.List;
-
-
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "objectives")
-public class Objectif {
-
+@Table(name = "tasks")
+public class Tache {
     @Getter
     @Setter
     @Id
@@ -28,15 +24,9 @@ public class Objectif {
     private Date createdDate,endDate;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "objective_id")
     @Getter
     @Setter
-    private User user;
-
-
-    @Getter
-    @Setter
-    @OneToMany(mappedBy = "objective", cascade = CascadeType.ALL)
-    private List<Tache> tasks;
+    private Objective objective;
 
 }
